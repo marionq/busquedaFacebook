@@ -21,11 +21,13 @@ class GetInfBusqueda:
 
     def get_inf_facebook(self, stringForASet):
         # Config File (configFile.ini)
-        config = configparser.ConfigParser()
-        config.read('./configFile.ini')
+        ##config = configparser.ConfigParser()
+        ##config.read('./configFile.ini')
         # Config File - [Facebook]
-        usuario = config["Facebook"]["usuario"]
-        password = config["Facebook"]["password"]
+        ##usuario = config["Facebook"]["usuario"]
+        usuario = 'mnq453@gmail.com'
+        ##password = config["Facebook"]["password"]
+        password = 'Galatas11_10'
         responseNn = []
 
         options = webdriver.ChromeOptions()
@@ -34,15 +36,16 @@ class GetInfBusqueda:
 
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-        driver.get(config["Facebook"]["url"])
+        ##driver.get(config["Facebook"]["url"])
+        driver.get('https://www.facebook.com/')
 
         # Loggin
-        WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputUser"]))).send_keys(usuario)
-        WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputPassword"]))).send_keys(password)
-        WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["butonIniSesion"]))).click()
+        ##WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputUser"]))).send_keys(usuario)
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.inputtext._55r1._6luy'))).send_keys(usuario)
+        ##WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputPassword"]))).send_keys(password)
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.inputtext._55r1._6luy._9npi'))).send_keys(password)
+        ##WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["butonIniSesion"]))).click()
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button._42ft._4jy0._6lth._4jy6._4jy1.selected._51sy'))).click()
 
         print("stringForASet: " + str(len(stringForASet)))
         time.sleep(2)
@@ -53,14 +56,15 @@ class GetInfBusqueda:
             driver.get(item)
             time.sleep(2)
             # Verificación Facebook
-            divPrincipals = driver.find_elements(By.CSS_SELECTOR, config["GetInfBusqueda"]["divPVerify"])
+            ##divPrincipals = driver.find_elements(By.CSS_SELECTOR, config["GetInfBusqueda"]["divPVerify"])
+            divPrincipals = driver.find_elements(By.CSS_SELECTOR, 'span.hrs1iv20.pq6dq46d')
             print("divPrincipals: " + str(len(divPrincipals)))
             print("URL" + str(ccc) + ":" + item)
             print("verificación: " + str(len(divPrincipals)))
             verifyFacebook = len(divPrincipals)
             # Busqueda de URL Imagen
             time.sleep(1)
-            divPrincipals = driver.find_elements(By.CLASS_NAME, config["GetInfBusqueda"]["divImage"])
+            divPrincipals = driver.find_elements(By.CLASS_NAME, 'b3onmgus.e5nlhep0.ph5uu5jm.ecm0bbzt.spb7xbtv.bkmhp75w.emlxlaya.s45kfl79.cwj9ozl2')
             if len(divPrincipals) > 0:
                 text = divPrincipals[0].get_attribute('innerHTML')
                 soup = BeautifulSoup(text, 'html.parser')
@@ -77,12 +81,14 @@ class GetInfBusqueda:
                 # Busqueda Información General
                 driver.get(item + '/about/?ref=page_internal')
                 time.sleep(1)
-                infsGral = driver.find_elements(By.CLASS_NAME, config["GetInfBusqueda"]["divInfGral"])
+                ##infsGral = driver.find_elements(By.CLASS_NAME, config["GetInfBusqueda"]["divInfGral"])
+                infsGral = driver.find_elements(By.CLASS_NAME, 'je60u5p8')
                 # Validación divs de información general
                 if len(infsGral) > 0:
                     textInfGral = infsGral[0].get_attribute('innerHTML')
                     soupInfGral = BeautifulSoup(textInfGral, 'html.parser')
-                    spanInfGral = soupInfGral.findAll("span", class_=config["GetInfBusqueda"]["spanInfGral"])
+                    ##spanInfGral = soupInfGral.findAll("span", class_=config["GetInfBusqueda"]["spanInfGral"])
+                    spanInfGral = soupInfGral.findAll("span", class_='d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh jq4qci2q a3bd9o3v b1v8xokw oo9gr5id')
                     cadenaDiv = str(spanInfGral[0].string)
                     likes = cadenaDiv[(cadenaDiv.find('A ') + 1):(cadenaDiv.find('persona'))]
                     likes = likes.replace(u'\xa0', u' ')

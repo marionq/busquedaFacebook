@@ -32,9 +32,12 @@ class GetUrlsBusqueda:
         driver.get('https://www.facebook.com/')
 
         # Loggin
-        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputUser"]))).send_keys(usuario)
-        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputPassword"]))).send_keys(password)
-        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["butonIniSesion"]))).click()
+        ##WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputUser"]))).send_keys(usuario)
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.inputtext._55r1._6luy'))).send_keys(usuario)
+        ##WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["inputPassword"]))).send_keys(password)
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.inputtext._55r1._6luy._9npi'))).send_keys(password)
+        ##WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, config["PaginaInicial"]["butonIniSesion"]))).click()
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button._42ft._4jy0._6lth._4jy6._4jy1.selected._51sy'))).click()
 
         time.sleep(2)
 
