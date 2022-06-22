@@ -5,14 +5,13 @@ from flask import jsonify
 
 from config import config
 
-
 # app Flask
 app = Flask(__name__)
 
 
 @app.route('/busqueda-facebook', methods=['POST'])
 def busquedaFacebook():
-    #urls = ["https://www.facebook.com/Recompensa-MX-104904185515071", "https://www.facebook.com/losdel1al10","https://www.facebook.com/Recompensas-MX-114057707972213"]
+    # urls = ["https://www.facebook.com/Recompensa-MX-104904185515071", "https://www.facebook.com/losdel1al10","https://www.facebook.com/Recompensas-MX-114057707972213"]
     try:
         requestBusqueda = request.json
         findUrl = GetUrlsBusqueda()
@@ -24,6 +23,18 @@ def busquedaFacebook():
     except Exception as ex:
         return ex
 
+
+@app.route('/busqueda', methods=['GET'])
+def busquedaFacebook():
+    try:
+        requestBusqueda = {
+            "busqueda": "recompensas mx"
+        }
+        return jsonify(requestBusqueda)
+    except Exception as ex:
+        return ex
+
+
 def pagina_no_encontrada(error):
     return "<h1>La página a la que intentas acceder no existe....</h1>", 404
 
@@ -31,4 +42,4 @@ def pagina_no_encontrada(error):
 if __name__ == '__main__':
     app.config.from_object(config['development'])
     app.register_error_handler(404, pagina_no_encontrada)
-    app.run(port = 5000)
+    app.run(port=5000)
