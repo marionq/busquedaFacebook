@@ -16,7 +16,7 @@ class GetUrlsBusqueda:
     def get_url_facebook(self, busqueda):
         # Config File (configFile.ini)
         config = configparser.ConfigParser()
-        config.read('./config/configFile.ini')
+        config.read('configFile.ini')
         # Config File - [Facebook]
         usuario = config["Facebook"]["usuario"]
         password = config["Facebook"]["password"]
