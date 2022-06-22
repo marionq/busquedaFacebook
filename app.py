@@ -24,17 +24,6 @@ def busquedaFacebook():
         return ex
 
 
-@app.route('/busqueda', methods=['GET'])
-def busquedaFacebook():
-    try:
-        requestBusqueda = {
-            "busqueda": "recompensas mx"
-        }
-        return jsonify(requestBusqueda)
-    except Exception as ex:
-        return ex
-
-
 def pagina_no_encontrada(error):
     return "<h1>La página a la que intentas acceder no existe....</h1>", 404
 
