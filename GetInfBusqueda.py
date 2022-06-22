@@ -22,7 +22,7 @@ class GetInfBusqueda:
     def get_inf_facebook(self, stringForASet):
         # Config File (configFile.ini)
         config = configparser.ConfigParser()
-        config.read('configFile.ini')
+        config.read('./configFile.ini')
         # Config File - [Facebook]
         usuario = config["Facebook"]["usuario"]
         password = config["Facebook"]["password"]
