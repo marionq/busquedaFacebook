@@ -8,11 +8,10 @@ from datetime import datetime
 
 import time
 import configparser
-import urllib.request
 
-from service.CnnService import CnnService
-from service.AnnService import AnnService
-from service.MailSenderService import MailSenderService
+from CnnService import CnnService
+from AnnService import AnnService
+from MailSenderService import MailSenderService
 
 # Opciones para la navegación
 from webdriver_manager.chrome import ChromeDriverManager
