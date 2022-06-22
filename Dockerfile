@@ -4,11 +4,13 @@ RUN mkdir /application
 WORKDIR /application
 
 COPY * .
+COPY service /application
 RUN pip install --upgrade pip
 RUN pip install webdriver-manager
 RUN pip install scikit-learn
 RUN pip install tf-nightly
 RUN pip install -r requirements.txt
+RUN pwd
 RUN ls -ltr
 
 ENV PYTHONUNBUFFERED 1
