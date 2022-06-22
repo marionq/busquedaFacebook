@@ -7,6 +7,7 @@ COPY * .
 RUN pip install --upgrade pip
 RUN pip install webdriver-manager
 RUN pip install scikit-learn
+RUN pip install tf-nightly
 RUN pip install -r requirements.txt
 
 COPY config .
