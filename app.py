@@ -3,7 +3,7 @@ from GetUrlsBusqueda import GetUrlsBusqueda
 from GetInfBusqueda import GetInfBusqueda
 from flask import jsonify
 
-from config.config import config
+from config import config
 
 
 # app Flask
