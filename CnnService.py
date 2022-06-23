@@ -6,7 +6,7 @@ class CnnService:
     def serviceCNN(self, urlImage):
         # Config File (configFile.ini)
         config = configparser.ConfigParser()
-        config.read('./config/configFile.ini')
+        config.read('configFile.ini')
         requestBody = {'image_url': urlImage}
 
         url = config["CnnService"]["url"]

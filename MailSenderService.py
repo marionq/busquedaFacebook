@@ -6,7 +6,7 @@ class MailSenderService:
     def simpleMail(self, requestSimpleMail):
         # Config File (configFile.ini)
         config = configparser.ConfigParser()
-        config.read('./config/configFile.ini')
+        config.read('configFile.ini')
 
         url = config["MailSenderService"]["url"]
         x = requests.post(url, json = requestSimpleMail)
