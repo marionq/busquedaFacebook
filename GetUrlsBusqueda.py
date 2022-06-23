@@ -27,7 +27,8 @@ class GetUrlsBusqueda:
         options.add_argument('--start-maximized')
         options.add_argument('--disable-extensions')
 
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        driver = webdriver.Chrome(executable_path=r"chromedriver")
 
         driver.get('https://www.facebook.com/')
 
