@@ -138,6 +138,7 @@ class GetInfBusqueda:
                     'fecha': str(today.strftime("%d/%m/%Y %H:%M:%S"))
                 })
 
+        driver.save_screenshot('django.png')
         driver.close()
         driver.quit()
 
